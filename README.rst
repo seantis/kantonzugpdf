@@ -6,7 +6,7 @@ A library to create PDF reports for the Canton of Zug
 Usage
 -----
 
-Create a subclass::
+Create a subclass and provide ``populate``::
 
     from kantonzugpdf import ReportZug
     from reportlab.lib.units import cm
@@ -37,7 +37,7 @@ Create a subclass::
             self.pdf.spacer()
             self.pdf.p(u'Above we see a table.')
 
-call build::
+call ``build``::
 
     TestReport().build()
 
