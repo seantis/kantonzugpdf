@@ -193,7 +193,7 @@ class Report(object):
     def populate(self):
         raise NotImplementedError
 
-    def build(self, context, request):
+    def build(self, context=None, request=None):
         self.context = context
         self.request = request
         self.populate()

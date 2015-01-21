@@ -40,7 +40,9 @@ setup(
     extras_require=dict(
         test=[
             'pytest',
-            'pytest-cov'
+            'pytest-cov',
+            'PyPDF2',
+            'pdfminer3k'
         ],
     ),
     classifiers=[
