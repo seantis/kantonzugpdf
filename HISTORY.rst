@@ -1,7 +1,8 @@
 Changelog
 ---------
 
-0.0.1 (unreleased)
+0.1.0 (2015-01-21)
 ~~~~~~~~~~~~~~~~~~
 
-Nothing yet.
+- Initial release.
+  [msom]
