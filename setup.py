@@ -6,7 +6,7 @@ name = 'kantonzugpdf'
 description = (
     'A library to create PDF reports for the Canton of Zug'
 )
-version = '0.1.1'
+version = '0.1.2'
 
 
 def get_long_description():
