@@ -90,7 +90,7 @@ class PDF(PDFDocument):
 
         if self.toc_numbering is not None and num_level is not None:
             # increment current level
-            if not num_level in self.toc_numbering:
+            if num_level not in self.toc_numbering:
                 self.toc_numbering[num_level] = 0
             self.toc_numbering[num_level] += 1
 
