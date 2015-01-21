@@ -35,7 +35,8 @@ setup(
     platforms='any',
     install_requires=[
         'pdfdocument',
-        'reportlab'
+        'reportlab==2.7',
+        'svglib'
     ],
     extras_require=dict(
         test=[
