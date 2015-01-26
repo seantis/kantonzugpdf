@@ -9,6 +9,13 @@ Usage
 Create a subclass of ReportZug and provide the populate method. To generate
 the PDF, call build.
 
+SVG
+---
+This package uses svglib which does not run properly with Python 3. To use
+SVG files with Python 2, install the svglib package. To use this package with
+Python 3, make sure get_logo of your report return None.
+
+
 Run the Tests
 -------------
 
