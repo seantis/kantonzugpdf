@@ -1,5 +1,6 @@
 import pkg_resources
 import tempfile
+import os
 
 from copy import deepcopy
 from datetime import date
@@ -15,8 +16,89 @@ from pdfdocument.document import (
     cm,
     MarkupParagraph
 )
+from reportlab.pdfbase.pdfmetrics import registerFont
+from reportlab.pdfbase.pdfmetrics import registerFontFamily
+from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus.tables import TableStyle
 from reportlab.platypus.tableofcontents import TableOfContents
+
+
+def get_font_path(font):
+    """ Reads the current path of the module, combines it with the fonts dir
+    and returns the fontpath of the given font-file. """
+
+    base = os.path.split(__file__)[0]
+    return os.path.join(base, 'fonts', font)
+
+
+def define_fonts():
+    """ Defines the required fonds when this module is imported """
+
+    # Liberation Sans
+    registerFont(
+        TTFont(
+            'Liberation-Sans', get_font_path('LiberationSans-Regular.ttf')
+        )
+    )
+    registerFont(
+        TTFont(
+            'Liberation-Sans-Bold',
+            get_font_path('LiberationSans-Bold.ttf')
+        )
+    )
+    registerFont(
+        TTFont(
+            'Liberation-Sans-Italic',
+            get_font_path('LiberationSans-Italic.ttf')
+        )
+    )
+    registerFont(
+        TTFont(
+            'Liberation-Sans-Bold-Italic',
+            get_font_path('LiberationSans-BoldItalic.ttf')
+        )
+    )
+    registerFontFamily(
+        'Liberation-Sans',
+        normal='Liberation-Sans',
+        bold='Liberation-Sans-Bold',
+        italic='Liberation-Sans-Italic',
+        boldItalic='Liberation-Sans-Bold-Italic'
+    )
+
+    # Free Sans
+    registerFont(
+        TTFont(
+            'Free-Sans', get_font_path('FreeSans.ttf')
+        )
+    )
+    registerFont(
+        TTFont(
+            'Free-Sans-Bold',
+            get_font_path('FreeSansBold.ttf')
+        )
+    )
+    registerFont(
+        TTFont(
+            'Free-Sans-Italic',
+            get_font_path('FreeSansOblique.ttf')
+        )
+    )
+    registerFont(
+        TTFont(
+            'Free-Sans-Bold-Italic',
+            get_font_path('FreeSansBoldOblique.ttf')
+        )
+    )
+    registerFontFamily(
+        'Free-Sans',
+        normal='Free-Sans',
+        bold='Free-Sans-Bold',
+        italic='Free-Sans-Italic',
+        boldItalic='Free-Sans-Bold-Italic'
+    )
+
+define_fonts()
 
 
 class Template(ReportingDocTemplate):
@@ -45,7 +127,7 @@ class PDF(PDFDocument):
         self.story = []
         self.toc_numbering = {}
 
-        self.font_name = kwargs.get('font_name', 'Helvetica')
+        self.font_name = kwargs.get('font_name', 'Free-Sans')
         self.font_size = kwargs.get('font_size', 10)
 
         self.margin_left = 3.5*cm
