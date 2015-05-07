@@ -1,10 +1,11 @@
 Changelog
 ---------
 
-0.1.3 (unreleased)
+0.2 (2015-05-07)
 ~~~~~~~~~~~~~~~~~~
 
-Nothing yet.
+- Use and embed a free font to better support unicode characters #1.
+  [msom]
 
 
 0.1.2 (2015-01-21)
