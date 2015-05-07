@@ -34,38 +34,6 @@ def get_font_path(font):
 def define_fonts():
     """ Defines the required fonds when this module is imported """
 
-    # Liberation Sans
-    registerFont(
-        TTFont(
-            'Liberation-Sans', get_font_path('LiberationSans-Regular.ttf')
-        )
-    )
-    registerFont(
-        TTFont(
-            'Liberation-Sans-Bold',
-            get_font_path('LiberationSans-Bold.ttf')
-        )
-    )
-    registerFont(
-        TTFont(
-            'Liberation-Sans-Italic',
-            get_font_path('LiberationSans-Italic.ttf')
-        )
-    )
-    registerFont(
-        TTFont(
-            'Liberation-Sans-Bold-Italic',
-            get_font_path('LiberationSans-BoldItalic.ttf')
-        )
-    )
-    registerFontFamily(
-        'Liberation-Sans',
-        normal='Liberation-Sans',
-        bold='Liberation-Sans-Bold',
-        italic='Liberation-Sans-Italic',
-        boldItalic='Liberation-Sans-Bold-Italic'
-    )
-
     # Free Sans
     registerFont(
         TTFont(
