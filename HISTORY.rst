@@ -1,8 +1,14 @@
 Changelog
 ---------
 
-0.2 (2015-05-07)
+0.2.1 (2015-05-07)
 ~~~~~~~~~~~~~~~~~~
+
+- Include missing resources.
+  [msom]
+
+0.2 (2015-05-07)
+~~~~~~~~~~~~~~~~
 
 - Use and embed a free font to better support unicode characters #1.
   [msom]
