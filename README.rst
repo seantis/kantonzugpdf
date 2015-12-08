@@ -7,7 +7,7 @@ Kantonzugpdf
 .. image:: https://coveralls.io/repos/seantis/kantonzugpdf/badge.png?branch=master
   :target: https://coveralls.io/r/seantis/kantonzugpdf?branch=master
 
-.. image:: https://img.shields.io/pypi/v/seantis.dir.events.svg
+.. image:: https://img.shields.io/pypi/v/kantonzugpdf.svg
   :target: https://pypi.python.org/pypi/kantonzugpdf
 
 A library to create PDF reports for the Canton of Zug
