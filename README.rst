@@ -1,6 +1,15 @@
 Kantonzugpdf
 ============
 
+.. image:: https://travis-ci.org/seantis/kantonzugpdf.png
+  :target: https://travis-ci.org/seantis/kantonzugpdf
+
+.. image:: https://coveralls.io/repos/seantis/kantonzugpdf/badge.png?branch=master
+  :target: https://coveralls.io/r/seantis/kantonzugpdf?branch=master
+
+.. image:: https://img.shields.io/pypi/v/seantis.dir.events.svg
+  :target: https://pypi.python.org/pypi/kantonzugpdf
+
 A library to create PDF reports for the Canton of Zug
 
 Usage
@@ -36,26 +45,6 @@ Kantonzugpdf follows PEP8 as close as possible. To test for it run::
     tox -e pep8
 
 Kantonzugpdf uses `Semantic Versioning <http://semver.org/>`_
-
-Build Status
-------------
-
-.. image:: https://travis-ci.org/seantis/kantonzugpdf.png
-  :target: https://travis-ci.org/seantis/kantonzugpdf
-  :alt: Build Status
-
-Coverage
---------
-
-.. image:: https://coveralls.io/repos/seantis/kantonzugpdf/badge.png?branch=master
-  :target: https://coveralls.io/r/seantis/kantonzugpdf?branch=master
-  :alt: Project Coverage
-
-Latests PyPI Release
---------------------
-.. image:: https://pypip.in/v/kantonzugpdf/badge.png
-  :target: https://crate.io/packages/kantonzugpdf
-  :alt: Latest PyPI Release
 
 License
 -------
