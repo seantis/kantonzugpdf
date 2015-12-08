@@ -1,6 +1,7 @@
-import pkg_resources
-import tempfile
 import os
+import pkg_resources
+import re
+import tempfile
 
 from copy import deepcopy
 from datetime import date
@@ -19,6 +20,7 @@ from pdfdocument.document import (
 from reportlab.pdfbase.pdfmetrics import registerFont
 from reportlab.pdfbase.pdfmetrics import registerFontFamily
 from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.platypus import Image
 from reportlab.platypus.tables import TableStyle
 from reportlab.platypus.tableofcontents import TableOfContents
 
@@ -186,6 +188,40 @@ class PDF(PDFDocument):
 
     def h6(self, text, toc_level=5):
         self.add_toc_heading(text, self.style.heading6, toc_level, 5)
+
+    def styled_paragraph(self, paragraph):
+        """ Add a styled paragraph (HTML).
+
+        Unrenderable attributes (such as class, title, target) and tags (such
+        as images) are removed. """
+
+        # remove images
+        re.sub(r"<img[^>]*>", "", paragraph)
+
+        # remove alt/target/class/title attributes
+        paragraph = re.sub(
+            r"(alt|class|title|target)=[\"'][^\"^']*[\"']", "",
+            paragraph
+        )
+
+        # Set link color
+        paragraph = paragraph.replace('<a', '<a color="#00538c"')
+
+        self.p_markup(paragraph)
+
+    def image(self, filename, ratio, size=1.0):
+        """ Add an image and fit it to the page. """
+
+        if ratio < 1:
+            width = 14 * cm * ratio * size
+            height = 18 * cm * size
+        else:
+            width = 14 * cm * size
+            height = 18 * cm / ratio * size
+
+        img = Image(filename, width=width, height=height)
+        img.hAlign = 'LEFT'
+        self.story.append(img)
 
     def init_report(self, page_fn=dummy_stationery, page_fn_later=None):
         frame_kwargs = {
