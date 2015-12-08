@@ -196,7 +196,7 @@ class PDF(PDFDocument):
         as images) are removed. """
 
         # remove images
-        re.sub(r"<img[^>]*>", "", paragraph)
+        paragraph = re.sub(r"<img[^>]*>", "", paragraph)
 
         # remove alt/target/class/title attributes
         paragraph = re.sub(
