@@ -38,6 +38,9 @@ class TestReport(ReportZug):
         self.pdf.p(u'This is another paragraph.')
         self.pdf.h2(u'level 2 title 2')
         self.pdf.h3(u'level 3 title 3')
+        self.pdf.h4(u'level 4 title 4')
+        self.pdf.h5(u'level 5 title 5')
+        self.pdf.h6(u'level 6 title 6')
         self.pdf.p(u'And again, a paragraph.')
         self.pdf.pagebreak()
 
@@ -46,6 +49,18 @@ class TestReport(ReportZug):
         self.pdf.table([[u'a', u'b'], [u'c', u'd']], [5*cm, 10*cm])
         self.pdf.spacer()
         self.pdf.p(u'Above we see a table.')
+        self.pdf.pagebreak()
+
+        # The fourth page a markup paragraph
+        markup = """
+        <p>
+            <img class="image" src="http://example.com/image" alt="image" />
+            <span class="text" title="Text">Text</span>
+            <a class="link" href="http://example.com" target="_blank">Link</a>
+        </p>
+        """
+        self.pdf.styled_paragraph(markup)
+        self.pdf.pagebreak()
 
 
 def extract_pdf_pages_p2(pdf):
@@ -82,7 +97,7 @@ def test_report():
     if not pages:
         pages = extract_pdf_pages_p3(TestReport().build())
 
-    assert len(pages) == 3
+    assert len(pages) == 4
 
     page = pages[0]
     assert u'report title' in page
@@ -92,6 +107,9 @@ def test_report():
     assert u'1.1.2 level 3 title 2' in page
     assert u'1.2 level 2 title 2' in page
     assert u'1.2.1 level 3 title 3' in page
+    assert u'1.2.1.1 level 4 title 4' in page
+    assert u'1.2.1.1.1 level 5 title 5' in page
+    assert u'1.2.1.1.1.1 level 6 title 6' in page
     assert u'2 level 1 title 2'
     assert u'This is a paragraph.' not in page
     assert u'This is another paragraph.' not in page
@@ -104,6 +122,9 @@ def test_report():
     assert u'1.1.2 level 3 title 2' in page
     assert u'1.2 level 2 title 2' in page
     assert u'1.2.1 level 3 title 3' in page
+    assert u'1.2.1.1 level 4 title 4' in page
+    assert u'1.2.1.1.1 level 5 title 5' in page
+    assert u'1.2.1.1.1.1 level 6 title 6' in page
     assert u'This is a paragraph.' in page
     assert u'This is another paragraph.' in page
     assert u'And again, a paragraph.' in page
@@ -116,3 +137,7 @@ def test_report():
     assert u'2 level 1 title 2' in page
     assert u'a\nb\nc\nd\n' in page or u'abcd' in page
     assert u'Above we see a table.' in page
+
+    page = pages[3]
+    assert u'Text' in page
+    assert u'Link' in page

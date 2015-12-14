@@ -1,10 +1,11 @@
 Changelog
 ---------
 
-0.2.2 (unreleased)
-~~~~~~~~~~~~~~~~~~
+0.3 (unreleased)
+~~~~~~~~~~~~~~~~
 
-Nothing yet.
+- Add support for markup paragraphs and images.
+  [msom]
 
 0.2.1 (2015-05-07)
 ~~~~~~~~~~~~~~~~~~
