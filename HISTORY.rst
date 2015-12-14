@@ -7,7 +7,7 @@ Changelog
 Nothing yet.
 
 
-0.3 (2012-12-14)
+0.3 (2015-12-14)
 ~~~~~~~~~~~~~~~~
 
 - Add support for markup paragraphs and images.
