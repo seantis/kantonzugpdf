@@ -17,9 +17,6 @@ except:
 
 class TestReport(ReportZug):
 
-    def get_logo(self):
-        return None
-
     def populate(self):
         self.title = u'report title'
         self.adjust_style()

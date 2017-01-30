@@ -4,7 +4,8 @@ Changelog
 0.3.1 (unreleased)
 ~~~~~~~~~~~~~~~~~~
 
-Nothing yet.
+- Use latest svglib.
+  [msom]
 
 
 0.3 (2015-12-14)
