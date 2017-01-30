@@ -1,4 +1,5 @@
 import io
+import pkg_resources
 
 from kantonzugpdf import ReportZug
 from reportlab.lib.units import cm
@@ -59,6 +60,15 @@ class TestReport(ReportZug):
         self.pdf.styled_paragraph(markup)
         self.pdf.pagebreak()
 
+        # The fifth and sixth pages images
+        image = pkg_resources.resource_filename(
+            'kantonzugpdf', 'resources/logo_zug.png'
+        )
+        self.pdf.image(image, 0.8)
+        self.pdf.pagebreak()
+        self.pdf.image(image, 1.2)
+        self.pdf.pagebreak()
+
 
 def extract_pdf_pages_p2(pdf):
     return [page.extractText() for page in PdfFileReader(pdf).pages]
@@ -94,7 +104,7 @@ def test_report():
     if not pages:
         pages = extract_pdf_pages_p3(TestReport().build())
 
-    assert len(pages) == 4
+    assert len(pages) == 6
 
     page = pages[0]
     assert u'report title' in page
