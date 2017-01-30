@@ -1,13 +1,17 @@
+sudo: false
 language: python
-
-env:
-    - TOXENV=py27
-    - TOXENV=py35
-    - TOXENV=pep8
+matrix:
+    include:
+        - python: 2.7
+          env: TOXENV=py27
+        - python: 3.5
+          env: TOXENV=py35
+        - python: 2.7
+          env: TOXENV=pep8
 install:
     - pip install tox
-    - if [ "$TOXENV" = 'py34' ]; then pip install coveralls; fi
+    - if [ "$TOXENV" = 'py35' ]; then pip install coveralls; fi
 script:
     - tox -e $TOXENV
 after_success:
-    - if [ "$TOXENV" = 'py34' ]; then coveralls; fi
+    - if [ "$TOXENV" = 'py35' ]; then coveralls; fi
