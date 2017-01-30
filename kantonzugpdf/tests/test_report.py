@@ -46,7 +46,7 @@ class TestReport(ReportZug):
 
         # The third page contains a table
         self.pdf.h1(u'level 1 title 2')
-        self.pdf.table([[u'a', u'b'], [u'c', u'd']], [5*cm, 10*cm])
+        self.pdf.table([[u'a', u'b'], [u'c', u'd']], [5 * cm, 10 * cm])
         self.pdf.spacer()
         self.pdf.p(u'Above we see a table.')
         self.pdf.pagebreak()

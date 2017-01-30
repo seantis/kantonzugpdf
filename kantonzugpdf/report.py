@@ -68,6 +68,7 @@ def define_fonts():
         boldItalic='Free-Sans-Bold-Italic'
     )
 
+
 define_fonts()
 
 
@@ -100,10 +101,10 @@ class PDF(PDFDocument):
         self.font_name = kwargs.get('font_name', 'Free-Sans')
         self.font_size = kwargs.get('font_size', 10)
 
-        self.margin_left = 3.5*cm
-        self.margin_top = 5.2*cm
-        self.margin_bottom = 4*cm
-        self.margin_right = 1.5*cm
+        self.margin_left = 3.5 * cm
+        self.margin_top = 5.2 * cm
+        self.margin_bottom = 4 * cm
+        self.margin_right = 1.5 * cm
 
     def generate_style(self, font_name=None, font_size=None):
         super(PDF, self).generate_style(font_name, font_size)
@@ -115,12 +116,12 @@ class PDF(PDFDocument):
         self.toc = TableOfContents()
 
         self.toc.levelStyles[0].leftIndent = 0
-        self.toc.levelStyles[0].rightIndent = 0.25*cm
+        self.toc.levelStyles[0].rightIndent = 0.25 * cm
         self.toc.levelStyles[0].fontName = self.font_name
         self.toc.levelStyles[0].fontName = '{}-Bold'.format(
             self.font_name
         )
-        self.toc.levelStyles[0].spaceBefore = 0.2*cm
+        self.toc.levelStyles[0].spaceBefore = 0.2 * cm
         for idx in range(1, 7):
             toc_style = deepcopy(self.toc.levelStyles[0])
             toc_style.name = 'Level {}'.format(idx)
@@ -133,7 +134,7 @@ class PDF(PDFDocument):
             ('VALIGN', (0, 0), (-1, -1), 'TOP'),
             ('RIGHTPADDING', (0, 0), (-1, -1), 0),
             ('LEFTPADDING', (0, 0), (-1, -1), 0),
-            ('BOTTOMPADDING', (0, 0), (-1, -1), 0.2*cm)
+            ('BOTTOMPADDING', (0, 0), (-1, -1), 0.2 * cm)
         ])
         self.story.append(self.toc)
 
@@ -147,14 +148,14 @@ class PDF(PDFDocument):
             self.toc_numbering[num_level] += 1
 
             # reset higher levels
-            for idx in range(num_level+1,
-                             max(self.toc_numbering.keys())+1):
+            for idx in range(num_level + 1,
+                             max(self.toc_numbering.keys()) + 1):
                 self.toc_numbering[idx] = 0
 
             # create and append prefix
             prefix = '.'.join([
                 str(self.toc_numbering.get(idx)) or u''
-                for idx in range(num_level+1)
+                for idx in range(num_level + 1)
             ])
             text = u'{} {}'.format(prefix, text)
 
@@ -343,10 +344,10 @@ class ReportZug(Report):
         canvas.saveState()
 
         dimensions = {
-            'xpos': 1.7*cm,
-            'ypos': self.pdf.page_height - 1.7*cm,
-            'xsize': 4.6*cm,
-            'ysize': 0.96*cm
+            'xpos': 1.7 * cm,
+            'ypos': self.pdf.page_height - 1.7 * cm,
+            'xsize': 4.6 * cm,
+            'ysize': 0.96 * cm
         }
 
         # self.pdf.draw_svg doesn't do strings, only file paths
@@ -370,14 +371,18 @@ class ReportZug(Report):
         print_date = self.get_print_date_text()
         footer_info = '<br />'.join((self.title, print_date))
         p = MarkupParagraph(footer_info, self.pdf.style.normal)
-        w, h = p.wrap(5*cm, doc.bottomMargin)
+        w, h = p.wrap(5 * cm, doc.bottomMargin)
         p.drawOn(canvas, self.pdf.margin_left, h)
 
         # page number
         page_info = '<br />' + str(doc.page_index()[0])
         p = MarkupParagraph(page_info, self.pdf.style.right)
-        w, h = p.wrap(1*cm, doc.bottomMargin)
-        p.drawOn(canvas, self.pdf.page_width - self.pdf.margin_right - 1*cm, h)
+        w, h = p.wrap(1 * cm, doc.bottomMargin)
+        p.drawOn(
+            canvas,
+            self.pdf.page_width - self.pdf.margin_right - 1 * cm,
+            h
+        )
 
         canvas.restoreState()
 
