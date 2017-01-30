@@ -1,7 +1,7 @@
 Changelog
 ---------
 
-0.3.1 (unreleased)
+0.3.1 (2017-01-30)
 ~~~~~~~~~~~~~~~~~~
 
 - Use latest svglib.
